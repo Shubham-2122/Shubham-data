@@ -1,0 +1,227 @@
+1) node lifecycle & event loop
+	: single thread
+	1.request entery
+	2. Evnet Queue request process 
+	3. Event Loop 	
+	4. Thread Pool - pass Database,  File ,network
+
+2) How to Exit Event Loop : one Requrest come end karva proecess.exit()
+	code : 
+	const http = require('http')
+	const server = http.createServer((req,res)=>{
+		console.log(req);
+		process.exit(); // stops event loop 
+	});
+
+	const PORT = 5000;
+	server.listen(PORT,()=>{
+		console.log(`server runing ar http://localhost:5000`);
+	})
+
+3) understance Request object 
+	request console checka karva 
+
+	console.log(req.url,req.method,req.headers);
+
+	code : 
+	// client and server mate  http moduule
+
+	const http = require('http');
+
+	const server = http.createServer((req, res) => {
+    		// console.log(req);
+    		console.log(req.url,req.method,req.headers)
+    		console.log("Server starting..")
+    		// process.exit();	
+	});
+
+	const PORT = 3000;
+
+	server.listen(PORT, () => {
+    		console.log(`server runing on address http://localhost:${PORT}`)	
+	});
+
+4) response object
+	res.setHeader('content-Type','json');
+	res.setHeader('content-Type','text/html');
+
+	
+	const server = http.createServer((req, res) => {
+    	// console.log(req);
+    	console.log(req.url,req.method,req.headers)
+    	console.log("Server starting..")
+    	// process.exit();
+    	res.setHeader('Contetnt-Type','text/html');
+    	res.write('<html>');
+    	res.write('<hrad><title>shubham jadav</title></head>');
+    	res.write('<body><h1>Hello shubham jadav here for node js</h1></body>')
+    	res.write('</html>');
+	res.end();
+	});
+
+5) routing request url : address change and data change for url
+	base url thi code show kari sakiye che
+	if(req.url == '/'){
+		return res.end();	
+	}
+	code : 
+	 if (req.url === '/') {
+        res.setHeader('Contetnt-Type', 'text/html');
+        res.write('<html>');
+        res.write('<hrad><title>shubham jadav</title></head>');
+        res.write('<body><h1>Welcome to Home page</h1></body>')
+        res.write('</html>');
+        return res.end()
+    }
+    else if (req.url === '/products') {
+        res.setHeader('Contetnt-Type', 'text/html');
+        res.write('<html>');
+        res.write('<hrad><title>shubham jadav</title></head>');
+        res.write('<body><h1>Products To chckout data</h1></body>')
+        res.write('</html>');
+        return res.end()
+        
+    }
+
+    res.setHeader('Contetnt-Type', 'text/html');
+    res.write('<html>');
+    res.write('<hrad><title>shubham jadav</title></head>');
+    res.write('<body><h1>Hello shubham jadav here for node js</h1></body>')
+    res.write('</html>');
+    res.end()
+
+
+6) taking User Input	
+	code : 
+	// client and server mate  http moduule
+
+const http = require('http');
+
+// server created
+const server = http.createServer((req, res) => {
+    // console.log(req);
+    console.log(req.url, req.method, req.headers)
+    console.log("Server starting..")
+    // process.exit();
+
+    // defferent Url show data
+    if (req.url === '/') {
+        res.setHeader('Contetnt-Type', 'text/html');
+       
+
+         res.write(`
+            <html>
+            <head>
+                <title>Shubham Jadav</title>
+            </head>
+            <body>
+                <h1>Enter Your Details</h1>
+
+                <form action="/submit" method="POST">
+                    <input type="text" name="username" placeholder="Enter your Name" required><br><br>
+
+                    <label for="male">Male</label>
+                    <input type="radio" id="male" name="gender" value="male"><br>
+
+                    <label for="female">Female</label>
+                    <input type="radio" id="female" name="gender" value="female"><br><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </body>
+            </html>
+        `);
+        return res.end()
+    }
+
+    res.setHeader('Contetnt-Type', 'text/html');
+    res.write('<html>');
+    res.write('<hrad><title>shubham jadav</title></head>');
+    res.write('<body><h1>Hello shubham jadav here for node js</h1></body>')
+    res.write('</html>');
+    res.end()
+
+});
+
+const PORT = 3000;
+
+// server respose
+server.listen(PORT, () => {
+    console.log(`server runing on address http://localhost:${PORT}`)
+});
+
+
+7) Redirecting : 
+
+
+
+Praticle task assigen 
+Task : Create a page that shows A navigation bar of Flipcart with following links:
+A.Home
+B.Men
+C.Kids
+E.Cart
+Cliking on each link page should navigation to that page and a welcome to section text is shown there
+
+How to multiple Link so to redirect serveer
+
+show Example : 
+const http = require('http')
+
+const server = http.createServer((req, res) => {
+    console.log(req.url, req.method);
+
+    if(req.url === "/home"){
+        res.write('<h1>Welcome to Home</h1>');
+        return res.end();
+    }
+    else if(req.url === "/men"){
+         res.write('<h1>Welcome to Men Page</h1>');
+        return res.end();
+    }
+    else if(req.url === "/women"){
+         res.write('<h1>Welcome to women Page</h1>');
+        return res.end();
+    }
+    else if(req.url === "/kids"){
+         res.write('<h1>Welcome to Kids Page</h1>');
+        return res.end();
+    }
+     else if(req.url === "/cart"){
+         res.write('<h1>Welcome to cart Page</h1>');
+        return res.end();
+    }
+
+    res.write(`
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flipkart</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/men">Men</a></li>
+            <li><a href="/women">Woman</a></li>
+            <li><a href="/kids">Kids</a></li>
+            <li><a href="/cart">Cart</a></li>
+        </ul>
+    </nav>
+</body>
+</html> 
+
+        `);
+    res.end();
+});
+
+const PORT = 3000;
+
+// server respose
+server.listen(PORT, () => {
+    console.log(`server runing on address http://localhost:${PORT}`)
+});
+	
+
+
+	

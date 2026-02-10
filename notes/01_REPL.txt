@@ -1,0 +1,4 @@
+R : read : read user input
+E : Eval : Evaluate User input
+P : print : print Output (result)
+l : loop : Event Loops data

@@ -1,0 +1,28 @@
+1) how DNS works?
+	: Domain Name entery
+	 
+2) how web works
+
+3) Node Core Modules
+	1.bulir-in: core Module are included with node.js
+	2. no install needed
+	3.Performanace
+Example Core use module
+	1.fs (file system): handles file operations like reading and 	writing files.
+	2.http : creates HTTP servers and makes HTTP requests.
+	3.https : lunch a SSL Server.
+	4.path : Provides utilities for handling and transforming file
+	5.paths.os : provide operating system-related utility methods and 	properties.
+	6.events : Handles events and event-driven programing
+	7.crypto : Provide cryptographic functionalities like hashing 	and encryption.
+	8.url : Parses and formats URL strings.
+
+4) Require keyword
+	1.purpost : import modules in node.js
+	2.caching : modules are cached after the first require call
+	syntax : const modulename = require('modlue')
+
+	built module
+	third party module
+	local file path module
+  
