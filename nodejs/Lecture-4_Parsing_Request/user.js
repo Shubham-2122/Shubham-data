@@ -1,10 +1,8 @@
 // client and server mate  http moduule
-
-const http = require('http');
 const fs = require('fs');
 
 // server created
-const server = http.createServer((req, res) => {
+const userrequestHandler = (req, res) => {
     // console.log(req);
     console.log(req.url, req.method)
     console.log("Server starting..")
@@ -82,11 +80,6 @@ const server = http.createServer((req, res) => {
     res.write('</html>');
     res.end()
 
-});
+};
 
-const PORT = 3000;
-
-// server respose
-server.listen(PORT, () => {
-    console.log(`server runing on address http://localhost:${PORT}`)
-});
+module.exports = userrequestHandler;

@@ -1,0 +1,12 @@
+Parctise Set
+create a calculator
+	1. create a new node.js project named "calculator".
+	2. On the home page (route "/"). show a welcome message and a link to the calculator page.
+	3. on the "/calculator" page, display a forn with two input fields and a "sum button.
+	3. when the user click the "sum" button, they should be taken to the "calculare-result" page., whice show the sum of the two number.
+	- make sure the request goes to the server.
+	- create a separate module for the addition funtion.
+	- create another module to handle incoming requests.
+	- on the "/claculate-result" page, parse the user input, use the addition mdule to calculate the sum , and display the result on new html page. 
+
+
