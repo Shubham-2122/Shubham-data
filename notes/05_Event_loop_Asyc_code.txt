@@ -1,0 +1,56 @@
+6. EVENT LOOP
+
+1.Event Driven
+2.Single Threaded
+3.V8 vs Libuv
+4.node Runtime
+5.Event Loop
+6.Async code 
+7.Blocking code
+
+6.1 Event Driven
+	On. data
+	On. End 
+	user-> click ->Event Listener -> Event Queue -> Event Loop -> Event handler
+
+6.2 single Threaded
+	
+	Request,event -> Event Loop (single work data) -> Thread Pool (WorkerThread(maindata))
+	
+	Main work : Event Loop karse 
+	File System,database file -> WorkerThread karse
+	opration completed thay pachu event loop jay 
+	pachi event loop trigger callback : req jay
+
+6.3 V8 Vs Libuv
+	V8:
+	1. open-source Javascipt engine by google.
+	2. Used in Chrome and node.js
+	3. comiles Javascript To native Machine code.
+	4. Ensure high-performance Javascript Execution.
+
+	libuv:
+	1. multi-platform support library for node.js
+	2. Handles asnchronous i/o operation.
+	3. Provide Event-driven architecture.
+	4. manegs file-system,networking and timers non-blocking across platforms.
+
+6.4 Node Runtime 
+
+	An invoked funtion in added to the call stack. once it return a value, it 	is popped off.
+	
+6.5 Event Loop
+	timers: this phase executes callbacks scheduled by setTimeout() and 
+		setInterval().
+	● pending callbacks: executes I/O callbacks 
+		deferred to the next loop iteration.
+	● idle, prepare: only used internally.
+	● poll: retrieve new I/O events; execute I/O related callbacks (almost all 		with the exception of close callbacks, the ones scheduled by 
+		timers, and setImmediate()); node will block here when 		appropriate.
+	● check: setImmediate() callbacks are invoked here.
+	● close callbacks: some close callbacks, e.g. 
+		socket.on('close', ...).
+
+6.6 Async Code
+
+	
