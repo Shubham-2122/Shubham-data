@@ -53,4 +53,77 @@
 
 6.6 Async Code
 
+	const sumRequest = (req, res) => {
+    console.log("1. In Sum request handles", req.url);
+    const body = [];
+    let result;
+    req.on('data', chunk => {
+        body.push(chunk);
+        console.log("2. chunk Came");
+    })
+    req.on('end', () => {
+         console.log("3. End Event came");
+        const bodyStr = Buffer.concat(body).toString();
+        console.log(bodyStr)
+        const params = new URLSearchParams(bodyStr);
+        const bodyobj = Object.fromEntries(params);
+        console.log(bodyobj)
+        result = parseInt(bodyobj.first) + parseInt(bodyobj.second);
+        console.log(result);
+       
+    });
+ console.log("4. Sending response");
+     res.setHeader('Content-Type', 'text/html');
+        res.write(
+            `<html>
+                <head>
+                    <title>Calcultor</title>
+                </head>
+                <body>
+                    <h1>Your Sum Is ${result}</h1>
+                </body>
+            </html>
+            `
+        );
+        return res.end();
+}
+
+exports.sumRequest = sumRequest;
+
+6.7 Blocking Code
+
+	user.js :	
+	Code :  this code change to Block line
+	 const bodyObject = Object.fromEntries(params);
+            console.log(bodyObject);
+            fs.writeFileSync('user.txt',JSON.stringify			(bodyObject));
+
+	change code : 
+	  fs.writeFile('user.txt', JSON.stringify		(bodyObject), error => {
+                console.log('Data Written Successfully');
+                res.statusCode = 302;
+                res.setHeader('Location', '/');
+                return res.end();
+            });
+
+
+Excess : 
+	Run & Observe
+		
+	
+	Blocking vs Async
+
+	const fs = require('fs');
+	console.log('1. Start of script' );
+	// Synchronous (blocking) operation
+	console.log('2. Reading file synchronously' );
+	const dataSync = fs.readFileSync ('user-details.txt' , 'utf8');
+	console.log('3. Synchronous read complete' );
+	// Asynchronous (non-blocking) operation
+	console.log('4. Reading file asynchronously' );
+	fs.readFile('user-details.txt' , 'utf8', (err, dataAsync ) => {
+	if (err) throw err;
+	console.log('6. Asynchronous read complete' );
+	});
+	console.log('5. End of script' );
 	
