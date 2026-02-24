@@ -1,0 +1,68 @@
+7.npm and Tools
+
+1.install material icons vs code
+2.npm init
+3.npm scripts
+4.npm packages
+5.Installing Packages
+6.Installing nodemon
+7.Using nodemon
+
+7.2 npm init : external lib add karva na
+	-> install npm use
+
+	code : npm init
+	package.json file created kari dese
+	like that :
+	{
+  		"name": "npm-test",
+  		"version": "1.0.0",
+  		"description": "Thisi project being created to leran about npm.",
+  		"license": "ISC",
+  		"author": "completed coding",
+  		"type": "commonjs",
+  		"main": "app.js",
+  		"scripts": {
+    		"test": "echo \"Error: no test specified\" && exit 1"
+  		}
+	}
+
+7.3 npm scripts
+	package.json change 
+	 "scripts": {
+   		 "test": "echo \"Error: no test specified\" && exit 1",
+    		"start": "node app.js",
+		 "shubham" : "node app.js"
+  	}
+
+	cmd : 
+	 -> npm start
+	 -> npm run shubham
+
+7.4 npm packges
+	1.npm : node.js package manager for code sharing.
+	2. Package :Reusable code or library.
+	3. Package.json : Defined package metadata and dependencies.
+	4. versioning : Manages defferent package versions.
+	5. Locl/global : install packages locally or globally.
+	6. registry : public storage for open-source packages.,
+	7.Example :Express,react,lodash.
+
+7.5  Installing Packages
+	npm install <package-name>
+	1. –save: Adds the package to the project’s dependencies inpackage.json.
+        2. –save-dev: Adds the package to the project’s devDependencies
+         (used only in development) in package.json.
+	3. -g: Installs the package globally, making it available system-wide, not just in a specific project.
+	4. –save-exact: Installs the exact version specified without updating for newer versions.
+	5. –force: Forces npm to fetch and install packages even if they are already installed.	
+
+7.6 Installing nodemon
+	
+	auto update code server auto update output
+	cmd : npm i nodemon --save-dev
+	cmd : npm i -g nodemon --save-dev
+
+	package : {
+		"start":"nodemon app.js"
+	}
