@@ -1,0 +1,43 @@
+8.  Errors & Debugging
+
+
+1. Types of Errors
+2. Syntax Errors
+3. Runtime Errors
+4. Logical Errors
+5. Using the Debugger
+6. Debugger with Async Code
+7. Restart Debug with nodemon
+
+8.1 Types of Errors
+
+
+	1. Syntax Error: An error in the code’s structure, causing it to
+	not compile or run (e.g., missing semicolon).
+	2. Logical Error: The code runs but produces incorrect results
+	due to faulty logic (e.g., wrong formula).
+	3. Runtime Error: An error that occurs while 
+
+
+8.2 syntax error
+
+	C:\Users\Admin\Desktop\shubham\MyWork\Shubham-data\nodejs\Lectur-7_Error_and_debugging\synatx.js:2
+    console.log("I Am inside Tesing syntax"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1504:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\Admin\Desktop\shubham\MyWork\Shubham-data\nodejs\Lectur-7_Error_and_debugging\app.js:2:23)
+
+Node.js v24.11.1
+[nodemon] app crashed - waiting for file changes before starting...
+
+8.3 Runtime Errors
