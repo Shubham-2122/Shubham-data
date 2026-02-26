@@ -41,3 +41,36 @@ Node.js v24.11.1
 [nodemon] app crashed - waiting for file changes before starting...
 
 8.3 Runtime Errors
+
+	const runtime = ()=>{
+
+    // not Define as runtime
+    // console.log(x)
+
+    // this is not Function
+    // let num = 98;
+    // num() 
+};
+module.exports =runtime;
+
+8.4 logical error
+  (==)
+	const logical = ()=>{
+
+    let num = 5 
+    if(num = 10){
+        console.log(num);
+    }
+    else{
+        console.log("num is not 10");
+    }
+}
+
+module.exports = logical
+
+8.5 Using The Debugger
+
+app.js 
+applciation  in run 
+1)start Debugging
+
