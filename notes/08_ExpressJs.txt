@@ -1,0 +1,33 @@
+9. Express.js
+
+1. What is Express.js
+2. Nedd of Express
+3. Installing Express.js
+4. Adding middlware
+5. sending Response
+6. Express Deepdive
+7. Handling Routs
+
+9.1 What is Express.js
+	1.Express.js is a minimal and flexible web application framework for node.js
+	2.It provides a robust set of features for building single-page,multi page, and hybird web 	  app.
+	3. Express.js Simplifies server-side coding by Providig a layer of fundmetal web application.
+
+	middleware : thodo thodo code bits ma karido 
+
+9.2 Need of Express.js
+	1. Express js simplifies server creation
+	2. Routing Management
+	3. Middleware Support
+	4. Api Development 
+	5. Community and plugins 
+
+9.3 Installing Express.js
+	same package ke liye
+	cmd -> npm install express
+	:Temoproy use
+	cmd -> npm install express --no-save
+	
+
+
+	
