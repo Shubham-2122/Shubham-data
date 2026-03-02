@@ -2,12 +2,14 @@ const http = require('http');
 const testingSyntax = require('./synatx')
 const runtime = require('./runtime')
 const logical = require("./logical");
+const userRequestHandler = require("./user")
 
 const server = http.createServer((req,res)=>{
     console.log(req.url,req.method);
     // testingSyntax();
     // runtime();
-    logical();
+    // logical();
+    userRequestHandler(req,res)
 })
 
 const PORT = 3001;
