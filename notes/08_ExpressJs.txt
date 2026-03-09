@@ -28,6 +28,90 @@
 	:Temoproy use
 	cmd -> npm install express --no-save
 	
+9.4 Adding middleware
+	Request -> middleware next() -> middleware res.end() response
 
+	Example: loging midd -> user Auth midd -> json parsing midd -> static file midd  
+
+9.5 sending response
+	code : 
+// core module
+const http = require('http');
+
+// global module
+const express = require('express');
+
+// local module user create
+const requestHanler = require('./user');
+
+ const app = express();
+
+app.use((req,res,next)=>{
+    console.log("Came in first middleware",req.url , req.method)
+    next();
+ })
+
+app.use((req,res,next)=>{
+    console.log("Came in second middleware",req.url , req.method)
+    res.send("<h1>hello this Express js")
+ })
+
+const server = http.createServer(app)
+
+const PORT = 3001;
+
+server.listen(PORT,()=>{
+    console.log(`Server Runing on Address http://localhost:${PORT}`);
+});
+
+
+9.6 Express deepdrive
+
+9.7 handling Routes
+	1. order matters
+	2. can not call next() after send()
+	3. "/" matcges everything 
+	4. calling res.send implicitly calls res.send()
+
+
+	code : 
+	app.use("/",(req,res,next)=>{
+    		console.log("Came in first middleware",req.url , req.method)
+    		//  res.send("<h1>hello welcome first middleware </h2>")
+    		next();
+	 })
+
+ 	app.use("/",(req,res,next)=>{
+    		console.log("Came in another middleware",req.url , req.method)
+     		res.send("<h1>hello another first middleware </h2>")
+    		// next();
+ 	})
+
+	app.use("/submit-details",(req,res,next)=>{
+    		console.log("Came in second middleware",req.url , req.method)
+    		res.send("<h1>hello this Express js</h2>")
+ 	})
+
+	after change code 
+	app.get("/",(req,res,next)=>{
+    console.log("Came in first middleware",req.url , req.method)
+    //  res.send("<h1>hello welcome first middleware </h2>")
+    next();
+ })
+
+ app.post("/submit-details",(req,res,next)=>{
+    console.log("Came in second middleware",req.url , req.method)
+    res.send("<h1>hello this Express js</h2>")
+ })
+
+ app.use("/",(req,res,next)=>{
+    console.log("Came in another middleware",req.url , req.method)
+     res.send("<h1>hello another first middleware </h2>")
+    // next();
+ })
+
+
+
+	
 
 	
